@@ -9,7 +9,15 @@ A lightweight, non-blocking IoT weather station powered by an ESP32-C3 Super Min
   <img src="https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus&logoColor=white" alt="C++">
 </p>
 ---
+## 📸 Preview
 
+**Web Dashboard UI**
+![Dashboard UI](assets/Dashboard.jpg)
+
+**Hardware Assembly**
+*ESP32-C3 microcontroller connected to the AHT20 and BMP280 I2C sensor module, powered by a standalone 18650 battery setup.*
+
+![Real Life Setup](assets/Real_Life.jpg)
 ## Hardware Architecture & Pinout
 
 The system runs on low-cost hardware utilizing an ESP32-C3 RISC-V microcontroller coupled with an AHT20 and BMP280 environmental sensor array over the I2C bus.
