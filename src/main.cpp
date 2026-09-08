@@ -97,7 +97,7 @@ void setup() {
 
     Wire.begin(4, 5);
     aht_connected = aht.begin();
-    bmp_connected = bmp.begin(0x76); 
+    bmp_connected = bmp.begin(0x77); 
 
     fetchInternetWeather();
     lastFetchTime = millis();
