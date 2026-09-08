@@ -8,7 +8,8 @@ A lightweight, non-blocking IoT weather station powered by an ESP32-C3 Super Min
   <img src="https://img.shields.io/badge/PlatformIO-4C4C4C?style=flat-square&logo=platformio&logoColor=white" alt="PlatformIO">
   <img src="https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus&logoColor=white" alt="C++">
 </p>
----
+
+
 ## 📸 Preview
 
 **Web Dashboard UI**
@@ -18,16 +19,17 @@ A lightweight, non-blocking IoT weather station powered by an ESP32-C3 Super Min
 *ESP32-C3 microcontroller connected to the AHT20 and BMP280 I2C sensor module, powered by a standalone 18650 battery setup.*
 
 ![Real Life Setup](assets/Real_Life.jpg)
+
 ## Hardware Architecture & Pinout
 
 The system runs on low-cost hardware utilizing an ESP32-C3 RISC-V microcontroller coupled with an AHT20 and BMP280 environmental sensor array over the I2C bus.
 
-| ESP32-C3 Pin | Module Pin | Description |
-| :--- | :--- | :--- |
-| **3.3V** | VCC | Regulated Power Supply *(Do not use 5V)* |
-| **GND** | GND | Common Ground |
-| **GPIO 4** | SDA | I2C Serial Data |
-| **GPIO 5** | SCL | I2C Serial Clock |
+| ESP32-C3 Pin     | Module Pin | Description                               |
+| :--------------- | :--------- | :---------------------------------------- |
+| **3.3V**   | VCC        | Regulated Power Supply*(Do not use 5V)* |
+| **GND**    | GND        | Common Ground                             |
+| **GPIO 4** | SDA        | I2C Serial Data                           |
+| **GPIO 5** | SCL        | I2C Serial Clock                          |
 
 ---
 
@@ -55,7 +57,8 @@ The system runs on low-cost hardware utilizing an ESP32-C3 RISC-V microcontrolle
 
    #endif
 
-3. Build and flash the firmware using PlatformIO with the appropriate USB-CDC communication flags.\
+   ```
+3. Build and flash the firmware using PlatformIO with the appropriate USB-CDC communication flags.
    Open your **Serial Monitor** (115200 baud) immediately after booting to check the local IP address assigned by your router.
 
 ## Tech Stack & Dependencies
