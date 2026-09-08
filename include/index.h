@@ -18,6 +18,9 @@ const char index_html[] PROGMEM = R"rawliteral(
             --accent-internet: #34d399;
             --border-color: #334155;
         }
+        html {
+            font-size: 20px; 
+        }
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-color);
@@ -74,10 +77,25 @@ const char index_html[] PROGMEM = R"rawliteral(
             letter-spacing: 0.5px;
             margin-bottom: 8px;
         }
+
         .value {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
+
+        #local-temp::before { content: "🌡️"; font-size: 1.5rem; }
+        #local-hum::before { content: "💧"; font-size: 1.5rem; }
+        #local-press::before { content: "📈"; font-size: 1.5rem; }
+
+        #ext-temp::before { content: "🌡️"; font-size: 1.5rem; }
+        #ext-hum::before { content: "💧"; font-size: 1.5rem; }
+        #ext-wind::before { content: "🌬️"; font-size: 1.5rem; }
+        
+ 
         .forecast-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -87,31 +105,40 @@ const char index_html[] PROGMEM = R"rawliteral(
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 16px 10px;
+            padding: 14px 10px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
         }
+
+        .forecast-icon {
+            font-size: 2rem;
+        }
+        .forecast-temps {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .temp-max { color: #f87171; }
+        .temp-min { color: #60a5fa; }
         .forecast-day {
             font-size: 0.85rem;
             color: var(--text-secondary);
             font-weight: 600;
             margin-bottom: 6px;
         }
-        .forecast-icon {
-            font-size: 1.8rem;
-            margin: 6px 0;
-        }
-        .forecast-temps {
-            font-size: 1rem;
-            font-weight: 600;
-        }
-        .temp-max { color: #f87171; }
-        .temp-min { color: #60a5fa; }
+       
+        
+
         .footer {
             text-align: center;
             font-size: 0.75rem;
             color: var(--text-secondary);
             margin-top: 35px;
         }
+        
     </style>
 </head>
 <body>
@@ -119,18 +146,19 @@ const char index_html[] PROGMEM = R"rawliteral(
         <h1>Weather Dashboard</h1>
         <div class="location-sub">&#128205; Tel Aviv, Israel</div>
         
-        <div class="section-title local-title">Local Sensors</div>
+ 
+    <div class="section-title local-title">Local Sensors</div>
         <div class="grid">
             <div class="card">
-                <div class="label">&#127777;&#65039; Temperature</div>
+                <div class="label">Temperature</div>
                 <div class="value" id="local-temp">-- &deg;C</div>
             </div>
             <div class="card">
-                <div class="label">&#128167; Humidity</div>
+                <div class="label">Humidity</div>
                 <div class="value" id="local-hum">-- %</div>
             </div>
             <div class="card">
-                <div class="label">&#128200; Pressure</div>
+                <div class="label">Pressure</div>
                 <div class="value" id="local-press">-- hPa</div>
             </div>
         </div>
@@ -138,18 +166,20 @@ const char index_html[] PROGMEM = R"rawliteral(
         <div class="section-title internet-title">Current Conditions</div>
         <div class="grid">
             <div class="card">
-                <div class="label">&#127777;&#65039; Ext. Temp</div>
+                <div class="label">Ext. Temp</div>
                 <div class="value" id="ext-temp">-- &deg;C</div>
             </div>
             <div class="card">
-                <div class="label">&#128167; Ext. Humidity</div>
+                <div class="label">Ext. Humidity</div>
                 <div class="value" id="ext-hum">-- %</div>
             </div>
             <div class="card">
-                <div class="label">&#127788;&#65039; Wind Speed</div>
+                <div class="label">Wind Speed</div>
                 <div class="value" id="ext-wind">-- km/h</div>
             </div>
         </div>
+
+
 
         <div class="section-title internet-title">5-Day Forecast</div>
         <div class="forecast-grid" id="forecast-container"></div>

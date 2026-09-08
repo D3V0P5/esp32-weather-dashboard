@@ -80,13 +80,20 @@ void fetchInternetWeather() {
 void setup() {
     delay(3000);
     Serial.begin(115200);
+    Serial.println("\nBooting ESP32 Weather Station...");
 
     WiFi.mode(WIFI_STA);
     WiFi.begin(ssid, password);
     
+    Serial.print("Connecting to WiFi");
     while (WiFi.status() != WL_CONNECTED) {
         delay(500);
+        Serial.print(".");
     }
+    
+    Serial.println("\nWiFi connected successfully!");
+    Serial.print("Dashboard IP Address: http://");
+    Serial.println(WiFi.localIP());
 
     Wire.begin(4, 5);
     aht_connected = aht.begin();
@@ -128,8 +135,8 @@ void setup() {
     });
 
     server.begin();
+    Serial.println("HTTP server started.");
 }
-
 void loop() {
     if (millis() - lastFetchTime > FETCH_INTERVAL) {
         lastFetchTime = millis();
